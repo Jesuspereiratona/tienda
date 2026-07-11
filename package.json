@@ -4,13 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "node app.js"
+    "dev": "node app.js",
+    "start": "node app.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
+    "chalk": "^4.1.2",
+    "dayjs": "^1.11.21",
     "express": "^5.2.1",
     "express-handlebars": "^9.0.1"
   }

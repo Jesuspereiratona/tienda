@@ -2,9 +2,18 @@ const path = require("node:path")
 const express = require("express")
 const { engine } = require('express-handlebars');
 const { routes } = require("./src/routes")
+const chalk = require("chalk")
+const dayjs = require("dayjs")
 
 const app = express()
 const PORT = 3000
+
+// Mensajes con chalk y dayjs (Tarea 3)
+const fechaHora = dayjs().format("DD/MM/YYYY HH:mm:ss")
+
+console.log(chalk.green(`¡Bienvenido a Mi Tiendita!`))
+console.log(chalk.yellow(`Fecha y hora actual: ${fechaHora}`))
+console.log(`Servidor iniciando...`)
 
 app.engine('handlebars', engine());
 app.set('view engine', 'handlebars');
@@ -15,5 +24,5 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.use(routes)
 
 app.listen(PORT, () => {
-    console.log(`Servidor en http://localhost:${PORT}/`)
+    console.log(chalk.green(`Servidor en http://localhost:${PORT}/`))
 })
