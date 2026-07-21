@@ -68,6 +68,7 @@ router.get("/productos", (req, res) => {
     res.json(productos)
 })
 
-module.exports = {
-    productsRoutes: router
+module.exports = { productsRoutes: router, productos 
+    
 }
+

@@ -8,19 +8,21 @@ const dayjs = require("dayjs")
 const app = express()
 const PORT = 3000
 
-// Mensajes con chalk y dayjs (Tarea 3)
 const fechaHora = dayjs().format("DD/MM/YYYY HH:mm:ss")
-
 console.log(chalk.green(`¡Bienvenido a Mi Tiendita!`))
 console.log(chalk.yellow(`Fecha y hora actual: ${fechaHora}`))
-console.log(`Servidor iniciando...`)
 
-app.engine('handlebars', engine());
+app.use(express.urlencoded({ extended: false }))
+
+app.engine('handlebars', engine({
+    helpers: {
+        mayusculas: (texto) => texto.toUpperCase()
+    }
+}));
 app.set('view engine', 'handlebars');
 app.set('views', './views');
 
 app.use(express.static(path.join(__dirname, 'public')))
-
 app.use(routes)
 
 app.listen(PORT, () => {
